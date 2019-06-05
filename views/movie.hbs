@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .center{
+            text-align: center;
+        }
+    </style>
+    <title>Movie list</title>
+</head>
+<body>
+    <h1>Movie list</h1>
+
+    {{#if noResult}}
+        Your query of '{{titleName}}' returns no results.
+    {{else}}
+    <h4>Total number of records found : {{countNum}}</h4>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each movie}}
+        <tr>
+            <td>{{this.film_id}}</td>
+            <td><a href="/movie/{{this.film_id}}">{{this.title}}</a></td>
+            <td>{{this.description}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+</body>
+</html>
